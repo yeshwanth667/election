@@ -1,8 +1,11 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import Home from "./Home";
 import Footer from "./Footer";
+//import HighlightedContext from "./HighlightedContext ";
 
-const Dashboard = ({ highlighted }) => {
+
+const Dashboard = ({highlighted}) => {
+ 
 
   const dashboardStyle = {
     border: highlighted ? '2px solid red' : 'none',

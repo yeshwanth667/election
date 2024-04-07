@@ -192,11 +192,198 @@
 
 // export default Login;
 
+// import React, { useState } from "react";
+// import { FaEye, FaEyeSlash } from "react-icons/fa";
+// import { toast } from "react-toastify";
+// import { apiBaseUrl } from "../apiConfig";
+// import { useNavigate,Link } from "react-router-dom";
+// import pic from "../Assets/pic.jpg";
+
+// const Login = () => {
+//   const navigate = useNavigate();
+//   const [passwordVisible, setPasswordVisible] = useState(false);
+//   const [formData, setFormData] = useState({
+//     email: "",
+//     password: "",
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const { email, password } = formData;
+
+//     if (!email.includes("@gmail.com")) {
+//       toast.warning("The email should contain @gmail.com");
+//       return;
+//     } 
+//     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+
+//     if (!password.match(passwordRegex)) {
+//       toast.warning("Password should contain 1 lowercase,1 uppercase and 1 special character");
+//       return;
+//     }
+
+//     try {
+//       const response = await fetch(`${apiBaseUrl}/elections/login`, {
+//         method: "POST",
+//         body: JSON.stringify(formData),
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       });
+
+//       const resData = await response.json();
+//       console.log(resData);
+
+//       if (resData.statusCode === 200) {
+//         sessionStorage.setItem('userName', JSON.stringify(resData.data.fullName));
+//         sessionStorage.setItem('gender',JSON.stringify(resData.data.gender));
+//         //sessionStorage.setItem('age',JSON.stringify(resData.data.age))
+//         sessionStorage.setItem('address',JSON.stringify(resData.data.address))
+//         sessionStorage.setItem('mobileNumber',JSON.stringify(resData.data.mobileNumber));
+//         sessionStorage.setItem('email',JSON.stringify(resData.data.email));
+//         sessionStorage.setItem('userId',JSON.stringify(resData.data.userId));
+//         sessionStorage.setItem('token',JSON.stringify(resData.data.emailVerificationToken));
+//         toast.success(resData.message);
+//         navigate("/dashboard");
+//       } else {
+//         toast.error(resData.message);
+//         return;
+//       }
+
+//       // if(resData.success){
+//       //   <Link to='/search'></Link>
+//       // }
+//       //   else{
+//       //     toast.success(resData.message);
+//       //   }
+
+//       if (!response.ok) {
+//         throw new Error(`Failed to update user data`);
+//       }
+//     } catch (error) {
+//       console.error("Error submitting user data:", error);
+//     }
+//   };
+
+//   const handleTogglePasswordVisibility = () => {
+//     setPasswordVisible(!passwordVisible); // Toggle password visibility
+//   };
+
+//   return (
+//     <div style={styles.container}>
+//       <form
+//         onSubmit={handleSubmit}
+//         style={{ border: "1px solid #a39c9c",borderRadius:'10px', padding: "4%", width: "28%" }}
+//       >
+//         <div style={styles.imageContainer}>
+//           <img src={pic} alt="login" style={styles.image} />
+//         </div>
+//         <p
+//           style={{
+//             display: "flex",
+//             justifyContent: "space-around",
+//             fontSize: "larger",
+//             fontWeight: "600",
+//           }}
+//         >
+//           Login to your Account
+//         </p>
+//         <div className="mb-4">
+//           <div className="form-outline">
+//             <label className="form-label">Email</label>
+//             <input
+//               type="email"
+//               id="email"
+//               name="email"
+//               value={formData.email}
+//               onChange={handleChange}
+//               className="form-control"
+//             />
+//           </div>
+//         </div>
+
+//         <div className="form-outline mb-4">
+//           <label className="form-label">Password</label>
+//           <div className="input-group">
+//             <input
+//               type={passwordVisible ? "text" : "password"}
+//               id="password"
+//               name="password"
+//               value={formData.password}
+//               onChange={handleChange}
+//               className="form-control"
+//             />
+//             <button
+//               className="btn btn-outline-secondary"
+//               type="button"
+//               onClick={handleTogglePasswordVisibility}
+//             >
+//               {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="row mb-4">
+//           {/* <div className="col d-flex justify-content-center">
+//             <div className="form-check">
+//               <input
+//                 className="form-check-input"
+//                 type="checkbox"
+//                 value=""
+//                 id="form2Example31"
+//                 checked
+//               />
+//               <label className="form-check-label" for="form2Example31">
+//                 {" "}
+//                 Remember me{" "}
+//               </label>
+//             </div>
+//           </div> */}
+
+//           <button type="submit" className="btn btn-primary btn-block mb-4">
+//             Sign in
+//           </button>
+
+//           <div className="mb-3 text-center"><Link to='/Signup'>Not Registered?? Click here to Signup</Link></div>
+
+//           {/* <div className="text-center">
+//             <a href="#!">Forgot password?</a>
+//           </div> */}
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// const styles = {
+//   container: {
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     height: "100vh",
+//   },
+//   imageContainer: {
+//     display: "flex",
+//     justifyContent: "center",
+//   },
+//   image: {
+//     width: "100px", // Adjust image size as needed
+//     height: "auto", // To maintain aspect ratio
+//   },
+// };
+
+// export default Login;
+
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { apiBaseUrl } from "../apiConfig";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import pic from "../Assets/pic.jpg";
 
 const Login = () => {
@@ -219,11 +406,13 @@ const Login = () => {
     if (!email.includes("@gmail.com")) {
       toast.warning("The email should contain @gmail.com");
       return;
-    } 
+    }
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
 
     if (!password.match(passwordRegex)) {
-      toast.warning("Password should contain 1 lowercase,1 uppercase and 1 special character");
+      toast.warning(
+        "Password should contain 1 lowercase,1 uppercase and 1 special character"
+      );
       return;
     }
 
@@ -240,27 +429,31 @@ const Login = () => {
       console.log(resData);
 
       if (resData.statusCode === 200) {
-        sessionStorage.setItem('userName', JSON.stringify(resData.data.fullName));
-        sessionStorage.setItem('gender',JSON.stringify(resData.data.gender));
-        //sessionStorage.setItem('age',JSON.stringify(resData.data.age))
-        sessionStorage.setItem('address',JSON.stringify(resData.data.address))
-        sessionStorage.setItem('mobileNumber',JSON.stringify(resData.data.mobileNumber));
-        sessionStorage.setItem('email',JSON.stringify(resData.data.email));
-        sessionStorage.setItem('userId',JSON.stringify(resData.data.userId));
-        sessionStorage.setItem('token',JSON.stringify(resData.data.emailVerificationToken));
+        sessionStorage.setItem(
+          "userName",
+          JSON.stringify(resData.data.fullName)
+        );
+        sessionStorage.setItem("gender", JSON.stringify(resData.data.gender));
+        sessionStorage.setItem(
+          "address",
+          JSON.stringify(resData.data.address)
+        );
+        sessionStorage.setItem(
+          "mobileNumber",
+          JSON.stringify(resData.data.mobileNumber)
+        );
+        sessionStorage.setItem("email", JSON.stringify(resData.data.email));
+        sessionStorage.setItem("userId", JSON.stringify(resData.data.userId));
+        sessionStorage.setItem(
+          "token",
+          JSON.stringify(resData.data.emailVerificationToken)
+        );
         toast.success(resData.message);
         navigate("/dashboard");
       } else {
         toast.error(resData.message);
         return;
       }
-
-      // if(resData.success){
-      //   <Link to='/search'></Link>
-      // }
-      //   else{
-      //     toast.success(resData.message);
-      //   }
 
       if (!response.ok) {
         throw new Error(`Failed to update user data`);
@@ -278,7 +471,7 @@ const Login = () => {
     <div style={styles.container}>
       <form
         onSubmit={handleSubmit}
-        style={{ border: "1px solid #a39c9c",borderRadius:'10px', padding: "4%", width: "28%" }}
+        style={{ border: "1px solid #a39c9c", borderRadius: "10px", padding: "4%", width: "100%", maxWidth: "400px" }}
       >
         <div style={styles.imageContainer}>
           <img src={pic} alt="login" style={styles.image} />
@@ -329,31 +522,13 @@ const Login = () => {
         </div>
 
         <div className="row mb-4">
-          {/* <div className="col d-flex justify-content-center">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="form2Example31"
-                checked
-              />
-              <label className="form-check-label" for="form2Example31">
-                {" "}
-                Remember me{" "}
-              </label>
-            </div>
-          </div> */}
-
           <button type="submit" className="btn btn-primary btn-block mb-4">
             Sign in
           </button>
 
-          <div className="mb-3 text-center"><Link to='/Signup'>Not Registered?? Click here to Signup</Link></div>
-
-          {/* <div className="text-center">
-            <a href="#!">Forgot password?</a>
-          </div> */}
+          <div className="mb-3 text-center">
+            <Link to="/Signup">Not Registered?? Click here to Signup</Link>
+          </div>
         </div>
       </form>
     </div>
@@ -378,3 +553,4 @@ const styles = {
 };
 
 export default Login;
+
