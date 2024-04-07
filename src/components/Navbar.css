@@ -1,0 +1,35 @@
+.nav-link {
+     /* Default link color */
+   /* // transition: color 0.3s; */
+    margin-right: 25px;
+    font-size: 21px;
+    color: black;
+    text-decoration: none;
+    
+  }
+  
+  .nav-link:hover {
+    border: 3px solid rgb(194, 112, 112);
+    background-color:#04AA6D;
+    height: 48px;
+    color: white;
+    /* margin-left: 5px;
+    margin-right: 5px; */
+  }
+
+  .about-active {
+    border-bottom: 2px solid blue;
+    /* animation: border-animation 3s infinite alternate; */
+  }
+  
+  @keyframes border-animation {
+    from {
+      border-color: blue;
+    }
+    to {
+      border-color: darkgrey;
+    }
+  }
+  
+  
+ 
