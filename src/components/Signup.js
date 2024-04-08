@@ -9,6 +9,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [validation, validationchange] = useState(false);
+  const [loading,setLoading]=useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     address: "",
@@ -26,8 +27,9 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { fullName, address, dateOfBirth, gender, mobileNumber, password, email } =formData;
-    if (fullName.length < 1 || address.length < 1) {
+    if (fullName.length < 1 || address.length < 1  ) {
       toast.warning("Fields must not be empty");
       return;
     }
@@ -92,6 +94,9 @@ const Signup = () => {
     } catch (error) {
       console.error("Error submitting user data:", error);
     }
+    finally{
+      setLoading(false);
+    }
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -149,7 +154,7 @@ const Signup = () => {
                   <div className="row">
                     <div className="col-md-6 mb-4">
                       <div className="form-outline">
-                        <label className="form-label">Full name<sup style={{color:'red',fontSize:"16px"}}>*</sup></label>
+                        <label className="form-label">Full Name<sup style={{color:'red',fontSize:"16px"}}>*</sup></label>
                         <input
                           type="text"
                           id="fullName"
@@ -158,7 +163,7 @@ const Signup = () => {
                           onMouseDown={(e) => validationchange(true)}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Full Name Must Contain Atleast 4 Characters"
+                          //placeholder="Full Name Must Contain Atleast 4 Characters"
                         />
                         {/* {formData.fullName.length === 0 && validation && (
                           <span className="text-danger">Enter the name</span>
@@ -176,7 +181,7 @@ const Signup = () => {
                           onChange={handleChange}
                           onMouseDown={(e) => validationchange(true)}
                           className="form-control"
-                          placeholder="Address Must Contain Atleast 6 Characters"
+                          //placeholder="Address Must Contain Atleast 6 Characters"
                         />
                       </div>
                     </div>
@@ -187,14 +192,14 @@ const Signup = () => {
                       <div className="form-outline">
                         <label className="form-label">Date of Birth<sup style={{color:'red',fontSize:"16px"}}>*</sup></label>
                         <input
-                          required
+                          
                           type="date"
                           id="dateOfBirth"
                           name="dateOfBirth"
                           value={formData.dateOfBirth}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="select the DOB"
+                        //  placeholder="select the DOB"
                         />
                       </div>
                     </div>
@@ -208,7 +213,7 @@ const Signup = () => {
                           value={formData.mobileNumber}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Enter Mobile number"
+                         // placeholder="Enter Mobile number"
                         />
                         {/* {formData.mobileNumber.length === 0 && validation && (
                           <span className="text-danger">Mobile Number should contain 10 digits</span>
@@ -271,7 +276,7 @@ const Signup = () => {
                           value={formData.email}
                           onChange={handleChange}
                           className="form-control"
-                          placeholder="Enter the email address"
+                        //  placeholder="Enter the email address"
                         />
                         {/* {formData.email!=="" && validation && (
                           <span className="text-danger">The Gmail must contain @gmail.com</span>
@@ -289,7 +294,7 @@ const Signup = () => {
                             value={formData.password}
                             onChange={handleChange}
                             className="form-control"
-                            placeholder="Min 8 characters required"
+                          //  placeholder="Min 8 characters required"
                           />
                           
                           <button
@@ -320,6 +325,7 @@ const Signup = () => {
                     </label>
                   </div> */}
 
+                  <p style={{color:'red',textAlign:'center'}}>{loading && 'Registering the User...' }</p>
                   <button
                     type="submit"
                     className="btn btn-primary btn-block mb-4"

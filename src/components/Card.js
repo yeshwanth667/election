@@ -35,7 +35,14 @@ const Card = () => {
         toast.success(resData.message);
         //setShowOtpField(true);
         setError(null);
-      } else {
+      }
+      else if(mobileNumber===""){
+        toast.warning('Mobile number is required')
+      } 
+      else if(mobileNumber.length !==10){
+        toast.warning('Mobile number must contain at least 10 digits')
+      }
+      else {
         setUserData(null);
         toast.error(resData.message);
       }
@@ -50,9 +57,7 @@ const Card = () => {
     setMobileNumber(e.target.value);
   };
 
-  // const mb=userData.data.mobileNumber;
-
-  const handleDownload = () => {
+  function handleDownload() {
     const cardElement = document.getElementById("card");
     if (cardElement) {
       html2canvas(cardElement).then((canvas) => {
@@ -61,13 +66,15 @@ const Card = () => {
         const imgWidth = 210; // A4 width in mm
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-        pdf.save('card');
+        pdf.save(userData.data.mobileNumber);
       });
     } else {
       // If the element is not found, show an error message or handle it accordingly
       console.error("Element with id 'card' not found");
     }
-  };
+  }
+
+  
 
   return (
     <Home>
@@ -76,7 +83,7 @@ const Card = () => {
           Enter the Mobile Number to View your Card
         </label>
         <input
-          type="text"
+          type="number"
           value={mobileNumber}
           onChange={handleChange}
           placeholder="Enter Mobile Number"
@@ -143,7 +150,7 @@ const Card = () => {
                           </div>
                           <div className="col-md-8">
                             <div className="card-body p-4">
-                              <h6>Information</h6>
+                              <h6>Voter Information</h6>
                               <hr className="mt-0 mb-4" />
                               <div className="row pt-1">
                                 <div className="col-6 mb-3">

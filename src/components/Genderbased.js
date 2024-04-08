@@ -69,7 +69,7 @@ const Genderbased = () => {
                 value="male"
                 checked={formData.gender === "male"}
                 onChange={handleChange}
-              // disabled={formData.gender === "female"}
+                // disabled={formData.gender === "female"}
               />
               <label className="form-check-label" htmlFor="male">
                 Male
@@ -96,7 +96,7 @@ const Genderbased = () => {
                 value="other"
                 checked={formData.gender === "other"}
                 onChange={handleChange}
-              // disabled={formData.gender === "male" && formData.gender === "female"}
+                // disabled={formData.gender === "male" && formData.gender === "female"}
               />
               <label className="form-check-label" htmlFor="other">
                 Other
@@ -105,7 +105,7 @@ const Genderbased = () => {
           </div>
         </div>
         <div>
-          {userData && (
+          {userData && userData.length>0 ? (
             <>
               <p
                 style={{
@@ -130,10 +130,10 @@ const Genderbased = () => {
                         <td style={cellStyle}>FullName</td>
                         <td style={cellStyle}>{item.fullName}</td>
                       </tr>
-                      {/* <tr>
-                          <td style={cellStyle}>Age</td>
-                          <td style={cellStyle}>{item.age}</td>
-                        </tr> */}
+                      <tr>
+                        <td style={cellStyle}>Age</td>
+                        <td style={cellStyle}>{item.age}</td>
+                      </tr>
                       <tr>
                         <td style={cellStyle}>Gender</td>
                         <td style={cellStyle}>{item.gender}</td>
@@ -159,6 +159,8 @@ const Genderbased = () => {
                 </div>
               ))}
             </>
+          ):(
+            <h4 style={{textAlign:'center'}}>{formData.gender && "No users to show" }</h4>
           )}
           {error && <p>{error}</p>}
         </div>

@@ -3,15 +3,7 @@ import Home from "./Home";
 import Footer from "./Footer";
 //import HighlightedContext from "./HighlightedContext ";
 
-
-const Dashboard = ({highlighted}) => {
- 
-
-  const dashboardStyle = {
-    border: highlighted ? '2px solid red' : 'none',
-    padding: '20px',
-  };
-
+const Dashboard = () => {
   return (
     <>
       <Home>
@@ -25,36 +17,35 @@ const Dashboard = ({highlighted}) => {
         >
           Welcome to the Election Management
         </h3>
-        <div
-          id="dashboard"
-          style={dashboardStyle}
-        >
-          <h4 style={{ textAlign: "center", marginBottom: "30px" }}>
-            About Our App
-          </h4>
-          <p
-            style={{
-              fontSize: "23px",
-              marginTop: "50px",
-              textAlign: "justify",
-            }}
-          >
-            Our Election Management system offers a suite of APIs tailored to
-            streamline every aspect of the electoral process. From user
-            registration to result tabulation, our APIs empower administrators
-            to manage voter data securely and ensure transparency and efficiency
-            in elections. With features such as user registration,
-            authentication, and candidate management.
-          </p>
-          <p style={{ fontSize: "23px", textAlign: "justify" }}>
-            {" "}
-            "Additionally, our APIs include functionalities for updating user
-            details, sending OTPs for email verification, and validating user
-            eligibility for voter cards, enhancing security and accessibility
-            throughout the electoral journey. Whether it's retrieving voter
-            information based on gender or deleting user records by mobile
-            number.
-          </p>
+        <div>
+          <div id="dashboard">
+            <h4 style={{ textAlign: "center", marginBottom: "30px" }}>
+              About Our App
+            </h4>
+            <p
+              style={{
+                fontSize: "23px",
+                marginTop: "50px",
+                textAlign: "justify",
+              }}
+            >
+              Our Election Management system offers a suite of APIs tailored to
+              streamline every aspect of the electoral process. From user
+              registration to result tabulation, our APIs empower administrators
+              to manage voter data securely and ensure transparency and
+              efficiency in elections. With features such as user registration,
+              authentication, and candidate management.
+            </p>
+            <p style={{ fontSize: "23px", textAlign: "justify" }}>
+              {" "}
+              "Additionally, our APIs include functionalities for updating user
+              details, sending OTPs for email verification, and validating user
+              eligibility for voter cards, enhancing security and accessibility
+              throughout the electoral journey. Whether it's retrieving voter
+              information based on gender or deleting user records by mobile
+              number.
+            </p>
+          </div>
         </div>
         <h4 style={{ textAlign: "center", marginTop: "96px" }}>
           Services We Offer

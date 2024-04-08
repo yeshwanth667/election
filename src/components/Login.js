@@ -219,7 +219,7 @@
 //     if (!email.includes("@gmail.com")) {
 //       toast.warning("The email should contain @gmail.com");
 //       return;
-//     } 
+//     }
 //     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
 
 //     if (!password.match(passwordRegex)) {
@@ -389,6 +389,7 @@ import pic from "../Assets/pic.jpg";
 const Login = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loading,setLoading]=useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -401,6 +402,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { email, password } = formData;
 
     if (!email.includes("@gmail.com")) {
@@ -434,10 +436,7 @@ const Login = () => {
           JSON.stringify(resData.data.fullName)
         );
         sessionStorage.setItem("gender", JSON.stringify(resData.data.gender));
-        sessionStorage.setItem(
-          "address",
-          JSON.stringify(resData.data.address)
-        );
+        sessionStorage.setItem("address", JSON.stringify(resData.data.address));
         sessionStorage.setItem(
           "mobileNumber",
           JSON.stringify(resData.data.mobileNumber)
@@ -448,6 +447,7 @@ const Login = () => {
           "token",
           JSON.stringify(resData.data.emailVerificationToken)
         );
+        sessionStorage.setItem("age", JSON.stringify(resData.data.age));
         toast.success(resData.message);
         navigate("/dashboard");
       } else {
@@ -461,6 +461,9 @@ const Login = () => {
     } catch (error) {
       console.error("Error submitting user data:", error);
     }
+    finally{
+      setLoading(false);
+    }
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -471,7 +474,13 @@ const Login = () => {
     <div style={styles.container}>
       <form
         onSubmit={handleSubmit}
-        style={{ border: "1px solid #a39c9c", borderRadius: "10px", padding: "4%", width: "100%", maxWidth: "400px" }}
+        style={{
+          border: "1px solid #a39c9c",
+          borderRadius: "10px",
+          padding: "4%",
+          width: "100%",
+          maxWidth: "400px",
+        }}
       >
         <div style={styles.imageContainer}>
           <img src={pic} alt="login" style={styles.image} />
@@ -521,6 +530,7 @@ const Login = () => {
           </div>
         </div>
 
+        <p style={{color:'red',textAlign:'center'}}>{loading && 'Signing in...'}</p>  
         <div className="row mb-4">
           <button type="submit" className="btn btn-primary btn-block mb-4">
             Sign in
@@ -553,4 +563,3 @@ const styles = {
 };
 
 export default Login;
-

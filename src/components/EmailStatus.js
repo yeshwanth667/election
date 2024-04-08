@@ -54,8 +54,13 @@ const EmailStatus = () => {
     <>
       <Home>
         <div className="mb-4 me-3">
-          <div className="d-flex justify-content-evenly" style={{width:'45%'}}>
-          <label className="form-label"><b>Select the Verification Status:</b></label>
+          <div
+            className="d-flex justify-content-evenly"
+            style={{ width: "45%" }}
+          >
+            <label className="form-label">
+              <b>Select the Verification Status:</b>
+            </label>
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -100,7 +105,7 @@ const EmailStatus = () => {
           </div>
         </div>
         <div>
-          {userData && (
+          {userData && userData.length>0 ?(
             <>
               <p
                 style={{
@@ -125,10 +130,10 @@ const EmailStatus = () => {
                         <td style={cellStyle}>FullName</td>
                         <td style={cellStyle}>{item.fullName}</td>
                       </tr>
-                      {/* <tr>
-                          <td style={cellStyle}>Age</td>
-                          <td style={cellStyle}>{item.age}</td>
-                        </tr> */}
+                      <tr>
+                        <td style={cellStyle}>Age</td>
+                        <td style={cellStyle}>{item.age}</td>
+                      </tr>
                       <tr>
                         <td style={cellStyle}>Gender</td>
                         <td style={cellStyle}>{item.gender}</td>
@@ -154,6 +159,8 @@ const EmailStatus = () => {
                 </div>
               ))}
             </>
+          ):(
+            <h4 style={{textAlign:'center'}}>{formData.gender && "No Verified users to show" }</h4>
           )}
           {error && <p>{error}</p>}
         </div>

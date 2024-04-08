@@ -11,6 +11,7 @@ const Search = () => {
     fullName: "",
     address: "",
     gender: "",
+    age:"",
     password: "",
     dateOfBirth: "",
     email: "",
@@ -42,6 +43,7 @@ const Search = () => {
         mobileNumber,
         password,
         email,
+        age,
         userId,
         emailVerificationToken,
         emailVerificationStatus,
@@ -53,6 +55,7 @@ const Search = () => {
         fullName,
         address,
         gender,
+        age,
         mobileNumber,
         password,
         dateOfBirth,
@@ -203,6 +206,10 @@ const Search = () => {
                   <tr>
                     <td>Mobile Number:</td>
                     <td>{userData.data.mobileNumber}</td>
+                  </tr>
+                  <tr>
+                    <td>Age:</td>
+                    <td>{userData.data.age}</td>
                   </tr>
                 </tbody>
               </table>

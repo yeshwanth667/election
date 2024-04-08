@@ -7,11 +7,12 @@ const Modal = ({ isOpen, onClose }) => {
 
   const firstName = sessionStorage.getItem("userName");
   const gender = sessionStorage.getItem("gender");
-  //const age = sessionStorage.getItem("age");
+  const age = sessionStorage.getItem("age");
   const address = sessionStorage.getItem("address");
   const mobile = sessionStorage.getItem("mobileNumber");
   const email=sessionStorage.getItem("email");
   const userId=sessionStorage.getItem("userId")
+
 
 
   const fullName = JSON.parse(firstName);
@@ -20,6 +21,7 @@ const Modal = ({ isOpen, onClose }) => {
   const mobile1= JSON.parse(mobile)
   const email1= JSON.parse(email);
   const userId1= JSON.parse(userId)
+  const age1=JSON.parse(age);
 
   return (
     <div className="modal-overlay">
@@ -47,10 +49,10 @@ const Modal = ({ isOpen, onClose }) => {
                 </td>
                 <td>{gender1}</td>
               </tr>
-              {/* <tr>
+              <tr>
                 <td><b>Age:</b></td>
-                <td>{age}</td>
-              </tr> */}
+                <td>{age1}</td>
+              </tr>
               <tr>
                 <td><b>Address:</b></td>
                 <td>{address1}</td>

@@ -106,6 +106,8 @@ function Navbar() {
                 backgroundColor: "#ce7d7d",
                 marginLeft: "25px",
                 height: "50px",
+                display:"flex",
+                justifyContent:"space-between"
               }}
               className="navbar-nav  me-auto w-50"
             >

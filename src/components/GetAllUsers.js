@@ -90,10 +90,10 @@ const GetAllUsers = () => {
                           <td style={cellStyle}>FullName</td>
                           <td style={cellStyle}>{item.fullName}</td>
                         </tr>
-                        {/* <tr>
+                        <tr>
                           <td style={cellStyle}>Age</td>
                           <td style={cellStyle}>{item.age}</td>
-                        </tr> */}
+                        </tr>
                         <tr>
                           <td style={cellStyle}>Gender</td>
                           <td style={cellStyle}>{item.gender}</td>
