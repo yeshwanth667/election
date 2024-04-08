@@ -46,7 +46,7 @@ const Genderbased = () => {
   const totalCount = userData ? userData.length : 0;
 
   const cellStyle = {
-    width: "200px", // Adjust the width as needed
+    width: "25%", // Adjust the width as needed
     wordWrap: "break-word", // Allow long content to wrap
   };
 

@@ -43,7 +43,8 @@ const GetAllUsers = () => {
 
   // CSS class for table cells
   const cellStyle = {
-    width: "200px", // Adjust the width as needed
+
+    width: "25%", // Adjust the width as needed
     wordWrap: "break-word", // Allow long content to wrap
   };
 
