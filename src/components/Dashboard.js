@@ -17,7 +17,7 @@ const Dashboard = () => {
         >
           Welcome to the Election Management
         </h3>
-        <div>
+        <div id="dashboard-container" style={{backgroundColor:'yellow'}}>
           <div id="dashboard">
             <h4 style={{ textAlign: "center", marginBottom: "30px" }}>
               About Our App

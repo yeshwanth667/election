@@ -202,8 +202,8 @@ function Navbar() {
                 >
                   <b>
                     {[formattedDate]} [{time.toLocaleTimeString()}]{" "}
-                  </b>
-                </div>
+                  </b></div>
+                
               </li>
               <li className="nav-item text-center">
                 <img

@@ -10,3 +10,18 @@ function MainLayout({children}) {
   }
 
   export default MainLayout;
+
+
+// import './main.css';
+
+// function MainLayout({ children }) {
+//   return (
+//     <main className="main-layout">
+//       <div className="container pt-4">
+//         {children}
+//       </div>
+//     </main>
+//   );
+// }
+
+// export default MainLayout;

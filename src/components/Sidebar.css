@@ -19,10 +19,25 @@
   transform: translateX(-100%);
 }
 
+.toggle-btn {
+  position: fixed;
+  top: 18%;
+  left: 10px;
+  z-index: 1001;
+}
+
+
 @media (max-width: 991.98px) {
-  .sidebar {
+  /* #sidebarMenu {
     display: none;
+  } */
+  .toggle-btn {
+    position: fixed;
+    top: 18%;
+    left: 10px;
+    z-index: 1001;
   }
+  
 }
 
 .list-group-item {
@@ -40,3 +55,32 @@
 .list-group-item i {
   margin-right: 0.75rem;
 }
+
+.list-group-item.py-1:hover {
+  background-color: darkgray;
+  border-radius: 25px;
+  
+}
+
+.list-group-item.py-1:hover a {
+  color: rgb(255, 0, 0);
+}
+
+
+.list-group-item.py-1 a {
+  font-size: 17px;
+  color: inherit; /* Inherit the color from parent */
+  color: blue;
+}
+
+
+
+.list-group-item.py-1 a:hover {
+  text-decoration: none;
+}
+
+
+/* ul li:hover{
+  border: 1px solid black;
+  height: 25px;
+} */
