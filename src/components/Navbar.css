@@ -17,19 +17,7 @@
     margin-right: 5px; */
   }
 
-  .about-active {
-    border-bottom: 2px solid blue;
-    /* animation: border-animation 3s infinite alternate; */
-  }
   
-  @keyframes border-animation {
-    from {
-      border-color: blue;
-    }
-    to {
-      border-color: darkgrey;
-    }
-  }
   
   
  

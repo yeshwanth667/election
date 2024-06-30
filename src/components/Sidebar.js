@@ -75,26 +75,27 @@ import { VscThreeBars } from "react-icons/vsc";
 function Sidebar({ isOpen }) {
   const [expanded, setExpanded] = useState(true);
 
+
   const toggleSidebar = () => {
     setExpanded(!expanded);
   };
 
   return (
     <>
-      <button className="toggle-btn btn btn-primary" onClick={toggleSidebar}>
+      <button className="toggle-btn btn btn-danger" onClick={toggleSidebar}>
       <VscThreeBars />
       </button>
-      <nav id="sidebarMenu" className={`sidebar ${expanded ? 'show' : 'hide'}`}>
+      <nav id="sidebarMenu" style={{backgroundImage: 'linear-gradient(to bottom right, #4e73df, #8da6df)',marginTop:'80px'}} className={`sidebar ${expanded ? 'show' : 'hide'}`}>
         <div style={{ position: 'sticky', top: '18%' }}>
           <div className="list-group list-group-flush mx-3 mt-4">
             <a className="list-group-item list-group-item-action py-2 ripple" aria-current="true"
               onClick={toggleSidebar} aria-expanded={expanded ? 'true' : 'false'}
               aria-controls="collapseExample1">
-              <i className="fas fa-tachometer-alt fa-fw me-3"></i><span>Expanded menu</span>
+              <i className="fas fa-tachometer-alt fa-fw  me-3"></i><span>Menu bar</span>
             </a>
             <ul id="collapseExample1" className={`collapse ${expanded ? 'show' : ''} list-group list-group-flush`}>
-              <li className="list-group-item py-1">
-                <Link to='/genderbased' className="text-decoration-none"><TbGenderEpicene /> Gender Based</Link>
+              <li  className="list-group-item py-1">
+                <Link  to='/genderbased' className="text-decoration-none"><TbGenderEpicene /> Gender Based</Link>
               </li>
               <li className="list-group-item py-1 ">
                 <Link to='/getallusers' className="text-decoration-none"><FaUsers /> Get all Users</Link>

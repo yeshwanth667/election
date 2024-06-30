@@ -1,9 +1,21 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Home from "./Home";
 import Footer from "./Footer";
+import {useNavigate} from 'react-router-dom'
+
 //import HighlightedContext from "./HighlightedContext ";
 
 const Dashboard = () => {
+
+  //const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const userData = sessionStorage.getItem("userId");
+  //   if (!userData) {
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
+
   return (
     <>
       <Home>
@@ -17,7 +29,10 @@ const Dashboard = () => {
         >
           Welcome to the Election Management
         </h3>
-        <div id="dashboard-container" style={{backgroundColor:'yellow'}}>
+        <div
+          id="dashboard-container"
+          style={{ backgroundColor: "#f7f7f0", width: "100%" }}
+        >
           <div id="dashboard">
             <h4 style={{ textAlign: "center", marginBottom: "30px" }}>
               About Our App
@@ -155,6 +170,7 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
+        
       </Home>
       <Footer id="footer" />
     </>

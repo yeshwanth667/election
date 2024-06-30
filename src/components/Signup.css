@@ -1,0 +1,48 @@
+._8esf ._5k_3 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px -6px -6px;
+    width: 411px;
+}
+
+._8esf ._5k_2 {
+    background-color: #fff;
+    border: 1px solid #ccd0d5;
+    box-sizing: border-box;
+    display: inline-block;
+    flex: 1 0 auto;
+    font-weight: normal;
+    height: 36px;
+    margin: 8px 6px 6px;
+    padding: 0;
+    position: relative;
+    width: auto;
+}
+
+
+#facebook ._8esf ._5k_2 ._58mt {
+    box-sizing: border-box;
+    color: #1c1e21;
+    display: inline-block;
+    font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    padding: 0 28px 0 10px;
+    width: 100%;
+}
+
+._8esf ._5k_2 ._8esa {
+    height: 36px;
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.gender-error {
+    border: 2px solid red !important;
+    width: 23%;
+    border-radius: 8%;
+    padding: 2px;
+  }
+  

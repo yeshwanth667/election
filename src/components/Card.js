@@ -62,14 +62,13 @@ const Card = () => {
     if (cardElement) {
       html2canvas(cardElement).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF("p", "mm", "a4"); // Specify document size as A4
-        const imgWidth = 210; // A4 width in mm
+        const pdf = new jsPDF("p", "mm", "a4"); 
+        const imgWidth = 210; 
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
         pdf.save(userData.data.mobileNumber);
       });
     } else {
-      // If the element is not found, show an error message or handle it accordingly
       console.error("Element with id 'card' not found");
     }
   }
@@ -150,7 +149,7 @@ const Card = () => {
                           </div>
                           <div className="col-md-8">
                             <div className="card-body p-4">
-                              <h6>Voter Information</h6>
+                              <h6>Voter Information:-<span><em style={{fontSize:'19px'}}>{userData.data.fullName}</em></span></h6>
                               <hr className="mt-0 mb-4" />
                               <div className="row pt-1">
                                 <div className="col-6 mb-3">

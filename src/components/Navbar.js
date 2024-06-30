@@ -7,39 +7,16 @@ import "./Navbar.css";
 import ECI from "../Assets/ECI.jpg";
 import { toast } from "react-toastify";
 import pic from "../Assets/pic.jpg";
-import Dashboard from "../components/Dashboard";
-//import { HighlightedProvider } from "./HighlightedContext ";
-//import Sidebar from '../components/Sidebar'
 
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [time, setTime] = useState(new Date());
   const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const [selectedOption, setSelectedOption] = useState("");
 
   const userId1 = sessionStorage.getItem("userId");
   const userId = JSON.parse(userId1);
-
-
-
-  const [highlighted, setHighlighted] = useState(false);
-
-  // const handleSetActive = (to) => {
-  //   setActiveSection(to);
-  //   setIsAboutActive(to === "dashboard" ? false : true);
-  //   setIsSidebarOpen(false); // Close the sidebar when an item in the navbar is clicked
-  //   setTimeout(() => {
-  //     setActiveSection("");
-  //     setIsAboutActive(false);
-  //   }, 3000); // Remove active section after 3 seconds
-  // };
-
-  const handleButtonClick = () => {
-    setHighlighted(true);
-    setTimeout(() => {
-      setHighlighted(false);
-    }, 3000); // After 3 seconds, remove the highlight
-  };
 
   const firstName = sessionStorage.getItem("userName");
   const fullName = JSON.parse(firstName);
@@ -70,7 +47,49 @@ function Navbar() {
     toast.info("Logged out Successfully");
   };
 
- 
+  const handleChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+
+    // Navigate to the desired route based on the selected value
+    if (selectedValue === "changePassword") {
+      navigate(`/updatepassword/${userId}`);
+    }
+  };
+
+  const handleServicesClick = () => {
+    // Navigate to the dashboard
+    navigate("/dashboard");
+
+    setTimeout(() => {
+      const servicesElement = document.getElementById("services")
+      if (servicesElement) {
+        servicesElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Adjust the delay as needed
+  };
+
+  const handleAboutClick = () => {
+    // Navigate to the dashboard
+    navigate("/dashboard");
+    setTimeout(() => {
+      const servicesElement = document.getElementById("dashboard");
+      if (servicesElement) {
+        servicesElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Adjust the delay as needed
+  };
+
+  const handleContactClick = () => {
+    // Navigate to the dashboard
+    navigate("/dashboard");
+    setTimeout(() => {
+      const servicesElement = document.getElementById("footer");
+      if (servicesElement) {
+        servicesElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Adjust the delay as needed
+  };
 
   return (
     <>
@@ -106,8 +125,8 @@ function Navbar() {
                 backgroundColor: "#ce7d7d",
                 marginLeft: "25px",
                 height: "50px",
-                display:"flex",
-                justifyContent:"space-between"
+                display: "flex",
+                justifyContent: "space-between",
               }}
               className="navbar-nav  me-auto w-50"
             >
@@ -133,7 +152,7 @@ function Navbar() {
                   offset={-70}
                   duration={500}
                   className="nav-link"
-                  onClick={handleButtonClick}
+                  onClick={handleAboutClick}
                   //className={`nav-link ${activeSection === "dashboard" ? "active" : ""} ${isAboutActive ? "about-active" : ""}`}
                   // onSetActive={handleSetActive}
                 >
@@ -149,6 +168,7 @@ function Navbar() {
                   offset={-70}
                   duration={500}
                   className="nav-link"
+                  onClick={handleServicesClick}
                 >
                   Services
                 </Link>
@@ -161,19 +181,21 @@ function Navbar() {
                     color: "black",
                     fontSize: "18px",
                   }}
+                  value={selectedOption}
                   className="form-select"
                   aria-label="More Services"
-                  onChange={(e) => (window.location.href = e.target.value)}
+                  //onChange={(e) => (window.location.href = e.target.value)}
+                  onChange={handleChange}
                 >
                   <option
                     style={{ backgroundColor: "white", color: "black" }}
-                    value=""
+                    value="More Services"
                   >
                     More Services
                   </option>
                   <option
                     style={{ backgroundColor: "white", color: "black" }}
-                    value={`/updatepassword/${userId}`}
+                    value="changePassword"
                   >
                     Change Password
                   </option>
@@ -188,6 +210,7 @@ function Navbar() {
                   offset={-70}
                   duration={500}
                   className="nav-link"
+                  onClick={handleContactClick}
                 >
                   Contact
                 </Link>
@@ -202,8 +225,8 @@ function Navbar() {
                 >
                   <b>
                     {[formattedDate]} [{time.toLocaleTimeString()}]{" "}
-                  </b></div>
-                
+                  </b>
+                </div>
               </li>
               <li className="nav-item text-center">
                 <img
@@ -229,12 +252,9 @@ function Navbar() {
         <Modal isOpen={isModalOpen} onClose={toggleModal} />
         {/* <Dashboard isAboutActive={isAboutActive} /> */}
         {/* <Dashboard highlighted={highlighted} /> */}
-
       </nav>
     </>
   );
 }
 
 export default Navbar;
-
-

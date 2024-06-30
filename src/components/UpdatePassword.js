@@ -25,7 +25,7 @@ function UpdatePassword() {
   const handlePasswordChange = async (e) => {
     e.preventDefault();
 
-    // Check if the new password and confirm password match
+    
     if (newPassword !== confirmPassword) {
       console.log("Passwords do not match");
       setErrorMessage("Passwords do not match.");
@@ -39,15 +39,15 @@ function UpdatePassword() {
       return;
     }
 
-    // Create a data object with the user ID, old password, and new password
+   
     const data = {
       userId,
       password: confirmPassword,
     };
 
     try {
-      // Make a POST request to the API to update the password
-      const response = await fetch(`${apiBaseUrl}/elections/updatePassword`, {
+      
+      const response = await fetch(`http://localhost:7702/api/elections/updatePassword`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

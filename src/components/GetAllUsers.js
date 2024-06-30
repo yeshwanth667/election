@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Home from "./Home";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const GetAllUsers = () => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,9 +43,12 @@ const GetAllUsers = () => {
     }
   };
 
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible); // Toggle password visibility
+  };
+
   // CSS class for table cells
   const cellStyle = {
-
     width: "25%", // Adjust the width as needed
     wordWrap: "break-word", // Allow long content to wrap
   };
@@ -104,7 +109,19 @@ const GetAllUsers = () => {
                         </tr>
                         <tr>
                           <td style={cellStyle}>Mobile Number</td>
-                          <td style={cellStyle}>{item.mobileNumber}</td>
+                          <td style={cellStyle}>
+                            {passwordVisible
+                              ? item.mobileNumber
+                              : item.mobileNumber.replace(/\d(?=\d{4})/g, "X")}
+                            <button
+                              className="btn btn-outline-secondary"
+                              type="button"
+                              onClick={handleTogglePasswordVisibility}
+                              style={{border:'none',marginTop:'-8px'}}
+                            >
+                              {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                          </td>
                         </tr>
                         <tr>
                           <td style={cellStyle}>Email</td>

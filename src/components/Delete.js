@@ -31,7 +31,7 @@ const Delete = () => {
     if (window.confirm(`Do You want to remove?`)) {
       try {
         const response = await fetch(
-          `http://localhost:7702/api/elections/${mobileNumber}`,
+          `http://localhost:7702/api/elections/deleteUser/${mobileNumber}`,
           {
             method: "DELETE",
           }

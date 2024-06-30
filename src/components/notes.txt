@@ -27,7 +27,6 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    
     if (name === "gender") {
       setGenderError(false); // Reset gender error when gender is selected
     }
@@ -50,15 +49,10 @@ const Signup = () => {
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (fullName.length < 1 || address.length < 1 || mobileNumber.length < 1 || email.length < 1 || password.length < 1 ||dateOfBirth < 1 ) {
+    if (fullName.length < 1 || address.length < 1) {
       toast.warning("Fields must not be empty");
       isValid = false;
-    }
-    else if  (!/^(?:[A-Z]\.\s*)*[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*$/.test(fullName) && !/^[A-Z](\.\s?[A-Z])*(\s[A-Z][a-z]+)+$/.test(fullName)) {
-      toast.warning("The fullname should contain at least 2 words with each word starting with a capital letter or initial should be in capital letters");
-      isValid = false;
-    }
-    else if (fullName.length < 4) {
+    } else if (fullName.length < 4) {
       toast.warning("The fullname should contain atleast 4 characters");
       isValid = false;
     } else if (address.length < 6) {
@@ -72,12 +66,10 @@ const Signup = () => {
       setGenderError(true); // Set gender error to true
       isValid = false;
       //isValid = false;
-    } 
-    // else if (!email.includes("@gmail.com")) {
-    //   toast.warning("The email should contain @gmail.com");
-    //   isValid = false;
-    // }
-     else if (!emailRegex.test(email)) {
+    } else if (!email.includes("@gmail.com")) {
+      toast.warning("The email should contain @gmail.com");
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
       toast.warning("Please enter a valid email address");
       isValid = false;
     } else {
@@ -141,7 +133,6 @@ const Signup = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
-        backgroundColor:'#e3e3e3'
       }}
     >
       <section
@@ -301,8 +292,55 @@ const Signup = () => {
                     </div>
                   </div>
 
+                  {/* <div className="mb-4 d-flex justify-content-between">
+                    <label className="form-label" style={{ flex: 1 }}>
+                      Gender:
+                      <sup style={{ color: "red", fontSize: "16px" }}>*</sup>
+                    </label>
+                    <div style={{ flex: 4, border: formSubmitted && genderError ? '1px solid red' : '' }} className="d-flex justify-content-around">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="male"
+                          checked={formData.gender === "male"}
+                          onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="male">
+                          Male
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="female"
+                          checked={formData.gender === "female"}
+                          onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="female">
+                          Female
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="gender"
+                          value="other"
+                          checked={formData.gender === "other"}
+                          onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="other">
+                          Other
+                        </label>
+                      </div>
+                    </div>
+                  </div> */}
                   
-                  <div style={{ marginBottom: "4%", marginTop: "1%" }}>
+                  <div style={{ marginBottom: "5%", marginTop: "2%" }}>
                     <span
                       class="_5k_3 d-flex justify-content-around"
                       data-type="radio"
@@ -315,11 +353,7 @@ const Signup = () => {
                       </div>
                       <span
                         style={{
-                          // border: "2px solid #dee2e6",
-                          border:
-                              formSubmitted && formData.gender === ""
-                                ? "2px solid red"
-                                : "2px solid #dee2e6",
+                          border: "2px solid #dee2e6",
                           width: "23%",
                           borderRadius: "8%",
                           padding: "2px",
@@ -339,14 +373,9 @@ const Signup = () => {
                           onChange={handleChange}
                         />
                       </span>
-                      
                       <span
                         style={{
-                          // border: "2px solid #dee2e6",
-                          border:
-                              formSubmitted && formData.gender === ""
-                                ? "2px solid red"
-                                : "2px solid #dee2e6",
+                          border: "2px solid #dee2e6",
                           width: "23%",
                           borderRadius: "8%",
                           padding: "2px",
@@ -368,11 +397,7 @@ const Signup = () => {
                       </span>
                       <span
                         style={{
-                          // border: "2px solid #dee2e6",
-                          border:
-                              formSubmitted && formData.gender === ""
-                                ? "2px solid red"
-                                : "2px solid #dee2e6",
+                          border: "2px solid #dee2e6",
                           width: "23%",
                           borderRadius: "8%",
                           padding: "2px",
@@ -441,10 +466,6 @@ const Signup = () => {
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            onCopy={(e)=>e.preventDefault()}
-                            onPaste={(e)=>e.preventDefault()}
-                            onCut={(e)=>e.preventDefault()}
-                            onDrop={(e)=>e.preventDefault()}
                             style={{
                               borderColor:
                                 formSubmitted && formData.password === ""
